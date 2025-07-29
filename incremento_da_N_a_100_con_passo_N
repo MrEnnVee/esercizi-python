@@ -1,0 +1,18 @@
+# incrementi a partire da un numero in input da utente a 100 con incrementi scelti dall'utente
+
+print("Incremento da N a 100 con passo N")
+
+num=100
+incr=-1
+
+while incr<0 or incr>100:
+    incr=int(input("Inserire valore incremento: ")) 
+while num>100-incr:
+    num=(int(input("IL numero da inserire deve essere minore di "+ str(100-incr) +" :")))
+i=0
+while num<100:
+    num+=incr
+    i+=1
+print("Per raggiungere 100, saranno necessarie",i, "somme con: ", incr)
+    
+    
