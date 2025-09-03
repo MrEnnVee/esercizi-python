@@ -1,0 +1,76 @@
+print ("LANCIO DEI DADI")
+
+LANCIO = 1
+SESSIONE = 2
+MEDIA = 3
+ESCI = 4
+
+import random
+
+def lancia ():
+    return random.randint (1,6)
+
+def lancia_dadi (n_dadi, n_lanci):
+    acc = 0
+    for i in range (n_lanci):
+        print ("Lancio n." +str(i+1))
+        for j in range (n_dadi):
+            l = lancia()
+            print ("Dado n.", j+1, ":" +str(l))
+            acc = acc+1
+            print()
+    return acc
+
+def sessione_lanci (n_ripetizione,n_dadi,n_lanci):
+    acc = 0
+    for i in range (n_ripetizione):
+        print ("Sessione n.", +str(i+1))
+        acc = acc + lancia_dadi (n_dadi, n_lanci)
+        print ("\n")
+    return acc
+
+def media_lanci (totale,numero):
+    return float(totale)/numero
+
+def visualizza_menu ():
+    print("\nMENU")
+    print("1 - Lancia i dadi")
+    print("2 - Sessione di lanci")
+    print("3 - Calcola la media dei lanci")
+    print("4 - Esci")
+
+def main ():
+    acc = 0
+    n_lanci_tot = 0
+    scelta = 0
+
+    while scelta != ESCI:
+        visualizza_menu()
+        scelta = int(input("Scegli un'opzione (1-4): \t"))
+        if scelta == LANCIO:
+            num =  int(input("Quanti dadi vuoi lanciare? \t"))
+            lanci = int(input("Inserire i numero di lanci per ciascun dado \t"))
+            print ()
+            num_lanci_tot = num*lanci
+            acc = lancia_dadi(num,lanci)
+    
+        elif scelta == SESSIONE:
+            sessioni = int(input("Inserire il numeri di sessioni di lancio: "))
+            num = int(input("Inserire il numero di lanci per ciascun lancio"))
+            lanci = int(input("Inserire il numero di lanci per ciascun dado: "))
+            print ()
+            num_lanci_tot = num*lanci
+            acc = sessione_lanci(sessioni,num,lanci)
+    
+        elif scelta == MEDIA:
+            print("La media degli ultimi lanci è", format(media_lanci(acc,num_lanci_tot),".2f"))
+            print ()
+    
+        elif scelta == ESCI:
+            print("Esco dal programma...")
+            print ()
+    
+        else:
+            print("Errore, scelta non valida!")
+
+main ()
